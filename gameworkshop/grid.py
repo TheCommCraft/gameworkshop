@@ -1,12 +1,13 @@
 import pygame
 from . import game_object
+from . import consts
 
 class Grid(game_object.GameObject):
     render_target: pygame.Surface
     width: int
     height: int
     tiles: list[list[bool]]
-    tile_size: int = 32
+    tile_size: int = consts.TILE_SIZE
     value: bool | None
     def __init__(self, width: int, height: int):
         self.render_target = pygame.Surface((self.tile_size * width, self.tile_size * height))
@@ -35,8 +36,8 @@ class Grid(game_object.GameObject):
     def update(self):
         if pygame.mouse.get_pressed()[0]:
             x, y = pygame.mouse.get_pos()
-            x = x // 32
-            y = y // 32
+            x = x // consts.TILE_SIZE
+            y = y // consts.TILE_SIZE
             if self.value is None:
                 self.value = not self[x, y]
             self[x, y] = self.value
