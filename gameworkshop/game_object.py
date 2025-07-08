@@ -18,7 +18,7 @@ number = float | int
 class GameObject(ABC):
     game_state: module_game_state.GameStateType
     collider: module_collider.Collider
-    position: tuple[number, number]
+    position: tuple[number, number] = (0, 0)
     
     @property
     def user_input(self):
