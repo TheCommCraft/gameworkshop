@@ -29,8 +29,12 @@ class Player(game_object.GameObject):
             self.position[0] + self.vx,
             self.position[1] + self.vy
         )
-        x, y = int(self.position[0]) // consts.TILE_SIZE, int(self.position[1]) // consts.TILE_SIZE
-        if self.grid[x, y]:
-            self.vy = -1
+        while True:
+            x, y = int(self.position[0]) // consts.TILE_SIZE, int(self.position[1]) // consts.TILE_SIZE + 1
+            if self.grid[x, y]:
+                self.vy = -1
+            else:
+                break
+            self.position = (self.position[0], self.position[1] - 0.2)
         if self.position[1] > consts.SCREEN_HEIGHT + consts.TILE_SIZE:
             self.position = (self.position[0], -consts.TILE_SIZE)
