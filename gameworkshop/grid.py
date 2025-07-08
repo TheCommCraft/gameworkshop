@@ -13,7 +13,7 @@ class Grid(game_object.GameObject):
         self.render_target = pygame.Surface((self.tile_size * width, self.tile_size * height))
         self.width = width
         self.height = height
-        self.tiles = [[False]*height]*width
+        self.tiles = [[False]*height for _ in range(width)]
     
     def __setitem__(self, item: tuple[int, int], value: bool):
         x, y = item
@@ -28,7 +28,7 @@ class Grid(game_object.GameObject):
         try:
             return self.tiles[x][y]
         except IndexError:
-            return
+            return False
     
     def draw(self, canvas):
         canvas.blit(self.render_target, self.position)

@@ -20,14 +20,17 @@ class Player(game_object.GameObject):
         pygame.draw.rect(canvas, (255, 0, 0), (self.position[0], self.position[1], self.width, self.height))
     
     def update(self):
-        self.vy += 1
+        self.vy += 0.5
         keys = pygame.key.get_pressed()
         self.vx += (keys[pygame.K_d] - keys[pygame.K_a])
         self.vx *= 0.8
-        self.vy *= 0.8
+        self.vy *= 0.999
         self.position = (
             self.position[0] + self.vx,
             self.position[1] + self.vy
         )
-        x, y = self.position[0] // consts.TILE_SIZE, self.position[1] // consts.TILE_SIZE
-        self.vy = self.grid[x, y]
+        x, y = int(self.position[0]) // consts.TILE_SIZE, int(self.position[1]) // consts.TILE_SIZE
+        if self.grid[x, y]:
+            self.vy = -1
+        if self.position[1] > consts.SCREEN_HEIGHT + consts.TILE_SIZE:
+            self.position = (self.position[0], -consts.TILE_SIZE)
