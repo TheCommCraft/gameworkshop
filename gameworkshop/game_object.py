@@ -1,4 +1,4 @@
-from __future__ import annotations # Das sorgt dafür, dass Typannotationen besser funktionieren.
+from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Literal, Self
 import random
@@ -10,8 +10,8 @@ from enum import Enum
 from pygame import SurfaceType
 import pygame
 from . import consts
-# Das ist ein Kommentar, er wird nicht als Code interpretiert.
-
+from . import game_state as module_game_state
+from . import collider as module_collider
 
 class ProjectileOwner(Enum):
     PLAYER = 0
