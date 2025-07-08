@@ -16,7 +16,7 @@ class Grid(game_object.GameObject):
     def __setitem__(self, item: tuple[int, int], value: bool):
         x, y = item
         self.tiles[x][y] = value
-        pygame.draw.rect(self.render_target, (0, 0, 0), (x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size))
+        pygame.draw.rect(self.render_target, (0, 0, 255 * value), (x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size))
     
     def __getitem__(self, item: tuple[int, int]) -> bool:
         x, y = item
