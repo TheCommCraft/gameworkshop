@@ -18,16 +18,20 @@ class Grid(game_object.GameObject):
     def __setitem__(self, item: tuple[int, int], value: bool):
         x, y = item
         try:
+            assert x >= 0
+            assert y >= 0
             self.tiles[x][y] = value
-        except IndexError:
+        except (IndexError, AssertionError):
             return
         pygame.draw.rect(self.render_target, (0, 0, 255 * value), (x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size))
     
     def __getitem__(self, item: tuple[int, int]) -> bool:
         x, y = item
         try:
+            assert x >= 0
+            assert y >= 0
             return self.tiles[x][y]
-        except IndexError:
+        except (IndexError, AssertionError):
             return False
     
     def draw(self, canvas):
