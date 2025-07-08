@@ -12,4 +12,7 @@ class GameState:
         self.canvas = pygame.display.set_mode((consts.SCREEN_WIDTH, consts.SCREEN_HEIGHT))
         self.running = True
         while self.running:
-            pass
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    self.running = False
