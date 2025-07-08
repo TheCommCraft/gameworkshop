@@ -5,8 +5,8 @@ from . import consts
 
 @dataclass
 class GameState:
-    canvas: pygame.Surface
-    running: bool
+    canvas: pygame.Surface = field(init=False)
+    running: bool = False
     
     def start(self):
         self.canvas = pygame.display.set_mode((consts.SCREEN_WIDTH, consts.SCREEN_HEIGHT))
