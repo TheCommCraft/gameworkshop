@@ -7,7 +7,7 @@ class Grid(game_object.GameObject):
         self.render_target = pygame.Surface()
     
     def draw(self, canvas):
-        self.
+        canvas.blit(self.render_target, self.position)
     
     def update(self):
-        return super().update()
+        pass
