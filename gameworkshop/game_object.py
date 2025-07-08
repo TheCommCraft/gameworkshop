@@ -24,9 +24,6 @@ class GameObject(ABC):
     def user_input(self):
         return self.game_state.user_input
     
-    def get_draw_details(self) -> consts.DrawDetails:
-        return consts.DrawDetails.NONE
-    
     @abstractmethod
     def draw(self, canvas: Canvas) -> None:
         pass
